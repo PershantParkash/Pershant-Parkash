@@ -379,9 +379,9 @@ const Navbar = () => {
 
 
 const Hero = () => {
-  const { scrollY } = useScroll();
-const y = useTransform(scrollY, [0, 800], [0, 40]);
- const opacity = useTransform(scrollY, [0, 800], [1, 0]);
+//   const { scrollY } = useScroll();
+// const y = useTransform(scrollY, [0, 800], [0, 40]);
+//  const opacity = useTransform(scrollY, [0, 800], [1, 0]);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
@@ -403,7 +403,7 @@ const y = useTransform(scrollY, [0, 800], [0, 40]);
         }}
       />
 
-      <motion.div style={{ y, opacity }} className="relative z-10 max-w-6xl mx-auto px-8 w-full">
+      <div className="relative z-10 max-w-6xl mx-auto px-8 w-full">
         <div className="grid md:grid-cols-2 gap-16 items-center min-h-[85vh]">
           {/* Left */}
           <div className="flex flex-col justify-center">
@@ -518,7 +518,7 @@ const y = useTransform(scrollY, [0, 800], [0, 40]);
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="flex justify-center md:justify-end"
+            className="flex justify-center md:justify-end mb-28 md:mb-0"
           >
             <div className="relative">
               <div
@@ -552,7 +552,7 @@ const y = useTransform(scrollY, [0, 800], [0, 40]);
               />
 
               <div
-                className="absolute -bottom-6 -left-8 px-4 py-3"
+                className="absolute -bottom-6 -left-8 px-4 py-3 mb-20"
                 style={{
                   background: C.bgAlt,
                   border: `1px solid ${C.hairline}`,
@@ -579,7 +579,7 @@ const y = useTransform(scrollY, [0, 800], [0, 40]);
             <ChevronDown className="w-4 h-4" />
           </motion.div>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 };
