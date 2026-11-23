@@ -1,33 +1,35 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Mona_Sans } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const mona = Mona_Sans({
+  variable: "--font-mona",
   subsets: ["latin"],
+  axes: ["wdth"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// Set NEXT_PUBLIC_SITE_URL if you move to a custom domain.
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://pershant-parkash.vercel.app";
+
+const title = "Pershant Parkash, Full-Stack Developer";
+const description =
+  "Full-stack developer in Karachi building web and mobile apps with Next.js, React Native, NestJS and PostgreSQL.";
 
 export const metadata: Metadata = {
-  title: "Pershant Parkash",
-  description: "full stack developer",
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  alternates: { canonical: "/" },
+  openGraph: { title, description, type: "website", url: "/" },
+  twitter: { card: "summary_large_image", title, description },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export const viewport: Viewport = { themeColor: "#12262d" };
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className={`${mona.variable} antialiased`}>
+      <body>{children}</body>
     </html>
   );
 }
